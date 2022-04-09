@@ -1,0 +1,20 @@
+.trade-offer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__price {
+    width: 150px;
+    background: #f3f3f3;
+    text-align: center;
+    padding: 7px 10px;
+  }
+
+  &__name {
+    padding: 7px 10px;
+  }
+}

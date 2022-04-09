@@ -1,0 +1,191 @@
+body {
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.3;
+  font-family: $font;
+  color: #000;
+  font-weight: normal;
+  cursor: default;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  @include lg-screen {
+    font-size: 14px;
+  }
+}
+
+.page {
+  min-width: 320px;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.header,
+.footer{
+  flex: 0 0 auto;
+}
+
+.main {
+  flex: 1 0 auto;
+  min-height: calc((var(--vh, 1vh) * 100));
+  display: flex;
+  flex-direction: column;
+
+  &__overflow {
+    overflow: hidden;
+  }
+
+  .footer {
+    margin-top: auto;
+  }
+}
+
+.page-container {
+  padding-bottom: 60px;
+}
+
+.suggestions-suggestions{
+  padding: 5px 0;
+  border-radius: 15px;
+  border-color: #C8C8C8;
+  margin-top: -1px;
+  //удаление логотипа дадата
+  &:last-child > div:last-child {
+    display: none!important;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: $container + $fields*2;
+  padding-left: $fields;
+  padding-right: $fields;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include xl-screen {
+    padding-left: 68px;
+    padding-right: 68px;
+  }
+
+  @include lg-screen {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+
+  @include md-screen {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include sm-screen {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &--mod {
+    height: calc(var(--vh, 1vh) * 100  - 270px);
+
+    @include xl-screen {
+      height: calc(var(--vh, 1vh) * 100  - 250px);
+    }
+
+    @include sm-screen {
+      height: calc(var(--vh, 1vh) * 100  - 150px);
+    }
+
+    .container__right {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &--full {
+    height: auto;
+    padding-top: 80px;
+
+    @include sm-screen {
+      padding-top: 50px;
+    }
+  }
+
+  &__right {
+    margin-left: auto;
+    max-width: 1550px;
+    width: 85%;
+    height: 100%;
+
+    @include lg-screen {
+      width: 90%;
+    }
+
+    @include md-screen {
+      width: 100%;
+    }
+  }
+}
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  position: relative;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul:not([class]) {
+  padding: 0 0 0 20px;
+
+  li {
+    margin-bottom: 15px;
+    list-style: disc;
+
+    &::marker {
+      color: currentColor;
+      font-size: 1.2em;
+    }
+  }
+}
+
+.modal-open, .vm--block-scroll {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width);
+}
+
+.vm--container.scrollable .vm--modal {
+  height: auto !important;
+}
+
+.vm--container.vm--container--pd0 {
+  .modal-wrap {
+    padding: 0 !important;
+
+    &__close {
+      right: -25px;
+      top: -25px;
+    }
+  }
+
+  .vm--modal {
+    overflow: visible !important;
+  }
+}
+
+.tooltip {
+  z-index: 300 !important;
+}

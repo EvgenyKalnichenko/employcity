@@ -1,0 +1,27 @@
+.goods {
+  border-radius: 10px;
+  border: 1px solid gray;
+  overflow: hidden;
+
+  &__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background: #d2dee2;
+    cursor: pointer;
+  }
+
+  &__list {
+  }
+}
+
+.grid-goods {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+}

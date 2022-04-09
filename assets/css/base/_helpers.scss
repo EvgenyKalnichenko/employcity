@@ -1,0 +1,194 @@
+.block {
+	display: block;
+}
+
+.flex {
+	display: flex;
+}
+
+.none {
+	display: none;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: -$halfGap;
+	margin-right: -$halfGap;
+}
+
+.col {
+	padding-left: $halfGap;
+	padding-right: $halfGap;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.shadow-box {
+  background: #FFFFFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.text-grey {
+  color: #8C8C8C;
+}
+
+.accent {
+  color: $accent;
+}
+
+.success {
+  color: #009D10;
+}
+
+.error {
+  color: #009D10;
+}
+
+.custom-scroll {
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #f9f9fd;
+    left: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $accent;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background-color: #f9f9fd;
+  }
+}
+
+[disabled], .disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.mg-t10 {
+  margin-top: 15px;
+}
+
+.mg-tb20 {
+  margin: 20px 0;
+}
+
+.mg-b40 {
+  margin-bottom: 40px;
+}
+
+.mg-b30 {
+  margin-bottom: 30px;
+}
+
+.mg-b15 {
+  margin-bottom: 15px;
+}
+
+.disabled {
+  pointer-events: none !important;
+}
+
+@include xl-screen {
+	.xl-block {
+		display: block;
+	}
+
+	.xl-flex {
+		display: flex;
+	}
+
+	.xl-none {
+		display: none;
+	}
+
+	.xl-text-center {
+		text-align: center;
+	}
+}
+
+@include lg-screen {
+	.lg-block {
+		display: block;
+	}
+
+	.lg-flex {
+		display: flex;
+	}
+
+	.lg-none {
+		display: none;
+	}
+
+  .lg-show {
+    display: block;
+  }
+}
+
+@include md-screen {
+	.md-block {
+		display: block;
+	}
+
+	.md-flex {
+		display: flex;
+	}
+
+  .md-inline-flex {
+    display: inline-flex;
+  }
+
+	.md-none {
+		display: none;
+	}
+
+  .md-show {
+    display: block;
+  }
+
+  .none.md-block, .md-block {
+    display: block;
+  }
+}
+
+@include sm-screen {
+	.sm-block {
+		display: block;
+	}
+
+	.sm-flex {
+		display: flex;
+	}
+
+	.sm-none {
+		display: none;
+	}
+
+  .mg-tb20 {
+    margin: 15px 0;
+  }
+}
+
+@include xs-screen {
+
+  .xs-none {
+    display: none !important;
+  }
+
+  .xs-flex {
+    display: flex;
+  }
+}

@@ -1,0 +1,114 @@
+.heading-1 {
+  font-weight: bold;
+}
+
+.list {
+  list-style: none;
+
+  li {
+    padding-left: 39px;
+    position: relative;
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      height: 1em;
+      width: 1em;
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none"%3E%3Cpath d="M14.7143 1L5.28571 10.4286L1 6.14286" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-position: left 2px;
+    }
+  }
+}
+
+.title-h2 {
+  font-size: 22px;
+  line-height: 28px;
+
+  &--mg25 {
+    margin-bottom: 25px;
+  }
+
+  @include sm-screen {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.title-h3 {
+  font-size: 24px;
+  line-height: 24px;
+
+  @include sm-screen {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+.title-h4 {
+  font-size: 16px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.title-h1 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 33px;
+
+  @include lg-screen {
+    font-size: 22px;
+  }
+
+  @include sm-screen {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &--mg25 {
+    margin-bottom: 25px;
+  }
+}
+
+.page-title {
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 70px;
+
+  @include xl-screen {
+    margin-bottom: 55px;
+  }
+
+  @include sm-screen {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 40px;
+  }
+
+  @include xs-screen {
+    margin-bottom: 30px;
+  }
+}
+
+.note {
+  font-size: 14px;
+  line-height: 26px;
+  color: #646464;
+  font-style: italic;
+}
+
+table {
+  border: 1px solid #eee;
+
+  td {
+    padding: 12px 16px;
+  }
+}

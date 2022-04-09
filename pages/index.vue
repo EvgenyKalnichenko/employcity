@@ -1,15 +1,20 @@
 <template>
   <div class="container">
-    <GoodsSection
-      v-for="item in value"
-      :key="item.T"
-      :title="item.G"
-      :items="item.B"
-    />
+    <h1>Наши товары</h1>
+    <div class="grid-goods">
+      <GoodsSection
+        v-for="(item, index) in productsByGroups"
+        :key="index"
+        :title="item.groupName"
+        :items="item.products"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'IndexPage',
   async asyncData ({ $axios }) {
@@ -29,8 +34,14 @@ export default {
       value: null
     }
   },
-  async mounted () {},
-  watch: {
+  methods: {
+    ...mapActions('goods', ['getProducts'])
+  },
+  computed: {
+    ...mapGetters('goods', ['productsByGroups'])
+  },
+  mounted () {
+    this.getProducts()
   }
 }
 </script>
