@@ -8,13 +8,38 @@
   }
 
   &__price {
-    width: 150px;
+    width: 120px;
     background: #f3f3f3;
-    text-align: center;
     padding: 7px 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
   }
 
   &__name {
     padding: 7px 10px;
+  }
+
+  &__buy {
+    cursor: pointer;
+    background: $accent;
+    padding: 5px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px;
+    flex-shrink: 0;
+    transition: 0.2s opacity ease-in-out;
+
+    &:hover {
+      opacity: 0.65;
+    }
   }
 }

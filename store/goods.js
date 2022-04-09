@@ -51,8 +51,6 @@ export const actions = {
     try {
       const data = await dispatch('fetchGoods')
       const groups = await dispatch('fetchNames')
-      console.log('data', data)
-      console.log('groups', groups)
       commit('setProductsByGroups', { data, groups })
     } catch (e) {
       console.log(e)
