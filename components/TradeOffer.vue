@@ -33,7 +33,7 @@ export default {
   methods: {
     ...mapActions('cart', ['addToCart']),
     add () {
-      const params = { id: this.id, groupId: this.groupId, quantity: this.quantity }
+      const params = { id: this.id, groupId: this.groupId }
       this.addToCart(params)
     }
   }

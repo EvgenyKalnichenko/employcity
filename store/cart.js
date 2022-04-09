@@ -3,9 +3,15 @@ export const state = () => ({
 })
 
 export const mutations = {
-  addToCart ({ cartProducts }, {
+  SET_CART ({ cartProducts }, data) {
+    if (data) {
+      cartProducts.push(...data)
+    }
+  },
+  ADD_TO_CART ({ cartProducts }, {
     groupId,
-    productId
+    productId,
+    quantity
   }) {
     const itemIndex = cartProducts.findIndex(x => x.groupId === groupId && x.productId === productId)
     if (itemIndex !== -1) {
@@ -17,12 +23,46 @@ export const mutations = {
         quantity: 1
       })
     }
+    localStorage.setItem('cart', JSON.stringify(cartProducts))
+  },
+  REMOVE_FROM_CART ({ cartProducts }, {
+    groupId,
+    productId
+  }) {
+    const itemIndex = cartProducts.findIndex(x => x.groupId === groupId && x.productId === productId)
+    if (itemIndex !== -1) {
+      cartProducts.splice(itemIndex, 1)
+    }
+    localStorage.setItem('cart', JSON.stringify(cartProducts))
   }
 }
 
 export const actions = {
-  addToCart ({ commit }, { id, groupId, quantity }) {
-    commit('addToCart', { groupId, productId: id })
+  addToCart ({ commit }, {
+    id,
+    groupId,
+    quantity
+  }) {
+    commit('ADD_TO_CART', {
+      quantity,
+      groupId,
+      productId: id
+    })
+  },
+  removeFromCart ({ commit }, {
+    id,
+    groupId
+  }) {
+    commit('REMOVE_FROM_CART', {
+      groupId,
+      productId: id
+    })
+  },
+  getCart ({ commit }) {
+    const data = JSON.parse(localStorage.getItem('cart'))
+    if (data) {
+      commit('SET_CART', data)
+    }
   }
 }
 

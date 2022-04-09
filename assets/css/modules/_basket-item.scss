@@ -1,0 +1,36 @@
+.basket-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #121212;
+  border-radius: 4px;
+  padding: 5px 10px;
+
+  &__title {
+    margin-right: 20px;
+  }
+
+  &__counter {
+    margin-left: auto;
+  }
+
+  &__remove {
+    cursor: pointer;
+    transition: 0.2s opacity ease-in-out;
+    font-size: 14px;
+    color: $error;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__price {
+    width: 150px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+}

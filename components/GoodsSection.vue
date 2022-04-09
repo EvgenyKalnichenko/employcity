@@ -8,9 +8,7 @@
         <div class="goods__top">
           <h2 class="goods__title">{{ title }}</h2>
           <div class="goods__icon">
-            <svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8.07107 1.53553L4.53554 5.07107L1 1.53553" stroke="currentColor" stroke-width="2"/>
-            </svg>
+            <svg-icon name="arrow-bottom" />
           </div>
         </div>
       </template>

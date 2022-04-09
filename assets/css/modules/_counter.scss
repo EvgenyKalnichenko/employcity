@@ -1,0 +1,56 @@
+.counter {
+  $block: &;
+  display: inline-flex;
+  border: 2px solid #BEBEBE;
+  border-radius: 20px;
+  overflow: hidden;
+
+  &.many {
+    border-color: $green;
+  }
+
+  &.few {
+    border-color: #13C6FF;
+  }
+
+  &.notAvailable {
+    pointer-events: none;
+    cursor: default;
+    border-color: #BEBEBE;
+
+    #{$block}__input {
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  &--change {
+    border-color: $error !important;
+  }
+
+  &__input {
+    font-size: 16px;
+    line-height: 20px;
+    height: 25px;
+    width: 35px;
+    border: none;
+    text-align: center;
+    user-select: none;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: 0.2s background-color linear;
+    color: #888888;
+
+
+    &:hover {
+      background: rgba(#888888, 0.2);
+    }
+  }
+}
