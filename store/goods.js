@@ -23,7 +23,6 @@ export const mutations = {
     data,
     groups
   }) {
-    console.log('setProductsBy', data)
     // Преобразование групп, для дальнейшей работы
     const productsByGroups = Object.fromEntries(Object.entries(groups).map(x => [x[0], {
       groupName: x[1].G,
