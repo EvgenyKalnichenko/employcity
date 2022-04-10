@@ -4,7 +4,7 @@
       <div class="trade-offer__name">{{ name }} <span>({{ quantity }})</span></div>
       <div class="trade-offer__buy" @click="add">В корзину</div>
     </div>
-    <div class="trade-offer__price">{{ price }}</div>
+    <div class="trade-offer__price"  :class="status">{{ price }} руб</div>
   </div>
 </template>
 
@@ -28,6 +28,10 @@ export default {
     },
     groupId: {
       type: String
+    },
+    status: {
+      type: String,
+      default: ''
     }
   },
   computed: {

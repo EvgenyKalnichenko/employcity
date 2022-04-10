@@ -14,7 +14,17 @@
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+
+    &.green {
+      background: #198b19;
+      color: #fff;
+    }
+
+    &.red {
+      background: #D01515FF;
+      color: #fff;
+    }
   }
 
   &__container {
@@ -37,6 +47,8 @@
     margin: 5px;
     flex-shrink: 0;
     transition: 0.2s opacity ease-in-out;
+    user-select: none;
+    touch-action: manipulation;
 
     &:hover {
       opacity: 0.65;

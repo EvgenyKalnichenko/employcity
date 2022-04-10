@@ -10,6 +10,7 @@
       v-model="counter"
       type="tel"
       class="counter__input"
+      @input="mask"
       @change="changeInput"
     >
     <div class="counter__btn" @click="increment">
@@ -59,8 +60,11 @@ export default {
       }
       this.handlerChangeInput()
     },
-    changeInput () {
+    mask () {
       this.counter = this.counter.replace(/[^0-9]/g, '')
+    },
+    changeInput () {
+      this.mask()
       if (!this.counter) {
         this.counter = 0
       }

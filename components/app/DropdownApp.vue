@@ -24,7 +24,8 @@ export default {
   },
   data () {
     return {
-      isOpen: null
+      isOpen: null,
+      disabled: false
     }
   },
   created () {
@@ -41,11 +42,17 @@ export default {
       leave(el, 200, done)
     },
     toggleDropdown () {
-      this.isOpen = !this.isOpen
-      if (this.isOpen) {
-        this.$el.classList.add('is-active')
-      } else {
-        this.$el.classList.remove('is-active')
+      if (!this.disabled) {
+        this.disabled = true
+        this.isOpen = !this.isOpen
+        if (this.isOpen) {
+          this.$el.classList.add('is-active')
+        } else {
+          this.$el.classList.remove('is-active')
+        }
+        setTimeout(() => {
+          this.disabled = false
+        }, 200)
       }
     }
   }

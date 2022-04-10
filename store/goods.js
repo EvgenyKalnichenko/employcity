@@ -4,10 +4,26 @@ export const state = () => ({
 })
 
 export const mutations = {
+  updateExchangeRates ({
+    exchangeRates,
+    productsByGroups
+  }, {
+    key,
+    val
+  }) {
+    exchangeRates[key] = val
+    // Обновляем стоимость для продуктов
+    for (const groupId in productsByGroups) {
+      for (const itemId in productsByGroups[groupId].products) {
+        productsByGroups[groupId].products[itemId].price[key] = +(productsByGroups[groupId].products[itemId].price.USD * val).toFixed(2)
+      }
+    }
+  },
   setProductsByGroups (state, {
     data,
     groups
   }) {
+    console.log('setProductsBy', data)
     // Преобразование групп, для дальнейшей работы
     const productsByGroups = Object.fromEntries(Object.entries(groups).map(x => [x[0], {
       groupName: x[1].G,
@@ -24,8 +40,10 @@ export const mutations = {
         let priceChangeStatus = ''
         // Проверяем был ли такой продукт в прошлом и сравниваем стоимость
         const previousPriceInUSD = state.productsByGroups[groupId]?.products[productId]?.price.USD
+        console.log('previousPriceInUSD', previousPriceInUSD)
         if (previousPriceInUSD !== undefined && previousPriceInUSD !== priceInUSD) {
-          priceChangeStatus = priceInUSD > previousPriceInUSD ? 'green' : 'red'
+          priceChangeStatus = priceInUSD > previousPriceInUSD ? 'red' : 'green'
+          console.log(priceChangeStatus)
         }
         productsByGroups[groupId].products[productId] = {
           id: productId,
@@ -51,7 +69,10 @@ export const actions = {
     try {
       const data = await dispatch('fetchGoods')
       const groups = await dispatch('fetchNames')
-      commit('setProductsByGroups', { data, groups })
+      commit('setProductsByGroups', {
+        data,
+        groups
+      })
     } catch (e) {
       console.log(e)
     }

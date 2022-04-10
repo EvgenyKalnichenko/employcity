@@ -20,6 +20,7 @@
             :id="item.id"
             :groupId="groupId"
             :name="item.name"
+            :status="item.priceChangeStatus"
             :quantity="item.quantity"
             :price="item.price.RUB"
           />

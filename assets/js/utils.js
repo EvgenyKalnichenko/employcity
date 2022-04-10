@@ -15,10 +15,18 @@ export const animateEasing = (render, duration, easing, endAnimation) => new Pro
   loop()
 })
 
-// запись в
+// запись в localStorage
 export const setLocalStorage = (data) => {
   localStorage.setItem('cart', JSON.stringify(data))
 }
+
+// Получить рандомное число
+export function randomInteger (min, max) {
+  // получить случайное число от (min-0.5) до (max+0.5)
+  const rand = min - 0.5 + Math.random() * (max - min + 1)
+  return Math.round(rand)
+}
+
 // тайминг функции
 export const line = (x) => {
   return x

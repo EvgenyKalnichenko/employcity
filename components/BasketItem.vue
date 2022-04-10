@@ -9,7 +9,7 @@
       />
     </div>
     <div class="basket-item__price">
-      {{ price }} руб.
+      {{ price }} руб. / шт.
     </div>
     <div class="basket-item__remove" @click="remove">
       <svg-icon name="close"/>
