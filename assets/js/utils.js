@@ -15,6 +15,10 @@ export const animateEasing = (render, duration, easing, endAnimation) => new Pro
   loop()
 })
 
+// запись в
+export const setLocalStorage = (data) => {
+  localStorage.setItem('cart', JSON.stringify(data))
+}
 // тайминг функции
 export const line = (x) => {
   return x

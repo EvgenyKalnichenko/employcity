@@ -9,10 +9,10 @@
       />
     </div>
     <div class="basket-item__price">
-      {{price}} руб.
+      {{ price }} руб.
     </div>
     <div class="basket-item__remove" @click="remove">
-      <svg-icon name="close" />
+      <svg-icon name="close"/>
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     ...mapActions('cart', ['removeFromCart']),
-    ...mapActions('cart', ['addToCart']),
+    ...mapActions('cart', ['changeQtyCart']),
     remove () {
       this.removeFromCart({
         id: this.value.productId,
@@ -52,7 +52,11 @@ export default {
       })
     },
     changeInput (data) {
-      this.addToCart({ id: this.value.productId, groupId: this.value.groupId, quantity: data.quantity })
+      this.changeQtyCart({
+        id: this.value.productId,
+        groupId: this.value.groupId,
+        quantity: data.quantity
+      })
     }
   }
 }

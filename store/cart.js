@@ -1,3 +1,5 @@
+import { setLocalStorage } from '~/assets/js/utils'
+
 export const state = () => ({
   cartProducts: []
 })
@@ -15,15 +17,32 @@ export const mutations = {
   }) {
     const itemIndex = cartProducts.findIndex(x => x.groupId === groupId && x.productId === productId)
     if (itemIndex !== -1) {
-      cartProducts[itemIndex].quantity++
-    } else {
+      cartProducts[itemIndex].quantity += quantity
+    } else if (Number(quantity) !== 0) {
       cartProducts.push({
         groupId,
         productId,
-        quantity: 1
+        quantity
       })
+    } else {
+      cartProducts.splice(itemIndex, 1)
     }
-    localStorage.setItem('cart', JSON.stringify(cartProducts))
+    setLocalStorage(cartProducts)
+  },
+  CHANGE_QTY_ITEMS ({ cartProducts }, {
+    groupId,
+    productId,
+    quantity
+  }) {
+    const itemIndex = cartProducts.findIndex(x => x.groupId === groupId && x.productId === productId)
+    if (itemIndex !== -1) {
+      if (quantity > 0) {
+        cartProducts[itemIndex].quantity = quantity
+      } else {
+        cartProducts.splice(itemIndex, 1)
+      }
+    }
+    setLocalStorage(cartProducts)
   },
   REMOVE_FROM_CART ({ cartProducts }, {
     groupId,
@@ -33,7 +52,7 @@ export const mutations = {
     if (itemIndex !== -1) {
       cartProducts.splice(itemIndex, 1)
     }
-    localStorage.setItem('cart', JSON.stringify(cartProducts))
+    setLocalStorage(cartProducts)
   }
 }
 
@@ -44,6 +63,17 @@ export const actions = {
     quantity
   }) {
     commit('ADD_TO_CART', {
+      quantity,
+      groupId,
+      productId: id
+    })
+  },
+  changeQtyCart ({ commit }, {
+    id,
+    groupId,
+    quantity
+  }) {
+    commit('CHANGE_QTY_ITEMS', {
       quantity,
       groupId,
       productId: id

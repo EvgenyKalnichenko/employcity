@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'TradeOffer',
@@ -30,10 +30,22 @@ export default {
       type: String
     }
   },
+  computed: {
+    ...mapGetters('cart', ['cartProducts'])
+  },
   methods: {
     ...mapActions('cart', ['addToCart']),
     add () {
-      const params = { id: this.id, groupId: this.groupId }
+      const params = {
+        id: this.id,
+        groupId: this.groupId,
+        quantity: 1
+      }
+      console.log('add', params)
+      const cartItemIndex = this.cartProducts.findIndex(x => x.groupId === this.groupId && x.productId === this.id)
+      if (this.cartProducts[cartItemIndex]?.quantity === this.quantity) {
+        return false
+      }
       this.addToCart(params)
     }
   }
