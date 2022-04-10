@@ -40,10 +40,8 @@ export const mutations = {
         let priceChangeStatus = ''
         // Проверяем был ли такой продукт в прошлом и сравниваем стоимость
         const previousPriceInUSD = state.productsByGroups[groupId]?.products[productId]?.price.USD
-        console.log('previousPriceInUSD', previousPriceInUSD)
         if (previousPriceInUSD !== undefined && previousPriceInUSD !== priceInUSD) {
           priceChangeStatus = priceInUSD > previousPriceInUSD ? 'red' : 'green'
-          console.log(priceChangeStatus)
         }
         productsByGroups[groupId].products[productId] = {
           id: productId,
